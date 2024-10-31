@@ -12,7 +12,7 @@ dev:
 
 PORT ?= 8000
 devstart:
-	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi:application
+	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
 
 start:
-	gunicorn task_manager:application
+	poetry run gunicorn task_manager.wsgi
