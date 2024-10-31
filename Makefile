@@ -1,5 +1,6 @@
 install:
 	poetry install
+	make static
 
 test:
 	poetry run pytest
@@ -16,3 +17,6 @@ devstart:
 
 start:
 	poetry run gunicorn task_manager.wsgi
+
+static:
+	python manage.py collectstatic
