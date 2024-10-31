@@ -118,8 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-if os.genenv('LANGUAGE'):
-    LANGUAGE_CODE = os.genenv('LANGUAGE')
+if os.getenv('LANGUAGE'):
+    LANGUAGE_CODE = os.getenv('LANGUAGE')
 else:
     LANGUAGE_CODE = 'en-us'
 
