@@ -13,8 +13,7 @@ class IndexView(TemplateView):
 
 class UserLoginView(LoginView):
     template_name = 'login.html'
-    def get_success_url(self):
-        return reverse_lazy('home')
+    next_page = reverse_lazy('home')
 
 class HomeView(TemplateView):
     template_name = 'home.html'
