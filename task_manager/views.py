@@ -13,7 +13,7 @@ class IndexView(TemplateView):
 
 class UserLoginView(LoginView):
     template_name = 'login.html'
-    next_page = reverse_lazy('home')
+    next_page = reverse_lazy('index')
 
 class HomeView(TemplateView):
     template_name = 'home.html'

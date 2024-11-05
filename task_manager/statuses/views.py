@@ -19,6 +19,7 @@ class StatusListView(ListView):
 
 class StatusCreateView(CreateView):
     model = Status
+    template_name = 'operation.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status created')
@@ -30,6 +31,7 @@ class StatusCreateView(CreateView):
 
 class StatusUpdateView(UpdateView):
     model = Status
+    template_name = 'operation.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status updated')
@@ -40,6 +42,7 @@ class StatusUpdateView(UpdateView):
 
 class StatusDeleteView(DeleteView):
     model = Status
+    template_name = 'operation.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status updated')
