@@ -19,35 +19,35 @@ class StatusListView(ListView):
 
 class StatusCreateView(CreateView):
     model = Status
-    template_name = 'operation.html'
+    template_name = 'form.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status created')
     extra_context = {
-        'operation': _('Create status'),
+        'header': _('Create status'),
         'button_text': _('Create')
     }
 
 
 class StatusUpdateView(UpdateView):
     model = Status
-    template_name = 'operation.html'
+    template_name = 'form.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status updated')
     extra_context = {
-        'operation': _('Update status'),
+        'header': _('Update status'),
         'button_text': _('Update')
     }
 
 class StatusDeleteView(DeleteView):
     model = Status
-    template_name = 'operation.html'
+    template_name = 'form.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status updated')
     extra_context = {
-        'operation': _('Delete status'),
+        'header': _('Delete status'),
         'button_text': _('Delete')
     }
 

@@ -1,0 +1,18 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% load i18n %}
+{% include 'header.html' %}
+<div class="container wrapper flex-grow-1">
+
+    <h1 class="my-4">{{ header }}</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% bootstrap_field field %}
+                {% endfor %}
+                {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
+            </form>
+            
+</div>
+{% include 'footer.html' %}
