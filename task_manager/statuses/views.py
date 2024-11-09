@@ -10,51 +10,13 @@ from django.views import View
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from .models import Status
-from .forms import StatusForm, StatusesForm, UniversalForm
+from .forms import StatusForm
 
 
-class GenericListView(View):
-    model = None
-    fields = []
-    def get(self, request, *args, **kwargs):
-        instances = self.model.objects.all()
-        return render(request, 'dataframe_template.html', {
-            'instances': instances,
-            'fields': self.fields,
-        })
-
-class UniversalListView(View):
-    model = None
-    
-    def get(self, request, *args, **kwargs):
-        header = self.model._meta.verbose_name
-        objects = self.model.objects.all()
-        form = UniversalForm(self.model)
-        context = {
-            'header': header,
-            'objects': objects,
-            'form': form,
-        }
-        return render(request, 'dataframe_template.html', context)
-
-    @classmethod
-    def as_view(cls, **initkwargs):
-        model = initkwargs.pop('model', None)  # Извлекаем модель из аргументов
-        if model is not None:
-            cls.model = model  # Устанавливаем модель как атрибут класса
-        return super().as_view(**initkwargs)
-
-class StatusListView(UniversalListView):
+class StatusListView(ListView):
     model = Status
-#class StatusListView(ListView):
-#    model = Status
-#    template_name = 'statuses/status_list.html'
-#    context_object_name = 'statuses'
-#class StatusListView(View):
-#    def get(self, request, *args, **kwargs):
-#        form = StatusesForm
-#        return render(request, 'dataframe_template.html', {'form': form})
-
+    template_name = 'statuses/status_list.html'
+    context_object_name = 'statuses'
 
 
 class StatusCreateView(CreateView):
@@ -82,13 +44,12 @@ class StatusUpdateView(UpdateView):
 
 class StatusDeleteView(DeleteView):
     model = Status
-    template_name = 'form.html'
-    form_class = StatusForm
+    template_name = 'delete_form.html'
     success_url = reverse_lazy('statuses')
-    success_message = _('Status updated')
+    success_message = _('Status deleted')
     extra_context = {
         'header': _('Delete status'),
-        'button_text': _('Delete')
+        'button_text': _('Yes, delete')
     }
 
 

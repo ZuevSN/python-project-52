@@ -7,31 +7,31 @@ from django.views.generic import (
 )
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from django.contrib.auth.models import User
+from task_manager.users.models import CustomUser
 from django.contrib.auth.forms import UserCreationForm
 
 
 class UserListView(ListView):
-    model = User
+    model = CustomUser
     template_name = 'users/user_list.html'
     context_object_name = 'users'
 
 
 class UserCreateView(CreateView):
-    model = User
+    model = CustomUser
     form_class = UserCreationForm
     template_name = 'users/create_user.html'
     success_url = reverse_lazy('login')
 
 
 class UserUpdateView(UpdateView):
-    model = User
+    model = CustomUser
     form_class = UserCreationForm
     template_name = 'users/edit_user.html'
     success_url = reverse_lazy('users')
 
 
 class UserDeleteView(DeleteView):
-    model = User
+    model = CustomUser
     template_name = 'users/delete_user.html'
     success_url = reverse_lazy('users')
