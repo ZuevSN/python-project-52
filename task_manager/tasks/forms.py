@@ -1,24 +1,23 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Status
+from .models import Task
 
 
-class UniversalForm(forms.ModelForm):
-    def __init__(self, model, *args, **kwargs):
-        self._meta.model = model
-        self.Meta.fields = [
-            field.name for field in model._meta.get_fields()
+class TaskForm(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        fields = [
+            'name',
+            'description',
+            'executor',
+            'initiator',
+            'status',
+            'labels'
         ]
-    
-    class Meta:
-        model = None
-        fields = []
-
-class StatusForm(forms.ModelForm):
-
-    class Meta:
-        model = Status
-        fields = ['name']
+        widgets = {
+            'created_at': forms.HiddenInput(),
+        }
 
 class StatusesForm(forms.Form):
     def __init__(self, *args, **kwargs):

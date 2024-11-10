@@ -23,20 +23,24 @@ class Task(models.Model):
     executor = models.ForeignKey(
         CustomUser,
         on_delete=models.PROTECT,
-        verbose_name=_('Executor')
+        verbose_name=_('Executor'),
+        related_name='executor'
     )
     initiator = models.ForeignKey(
         CustomUser,
         on_delete=models.PROTECT,
-        verbose_name=_('Initiator')
+        verbose_name=_('Initiator'),
+        related_name='initiator'
     )
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
-        verbose_name=_('Initiator')
+        verbose_name=_('Status')
     )
     labels = models.ManyToManyField(
-        Label
+        Label,
+        blank=True,
+        related_name='tasks'
     )
 
     def __str__(self):

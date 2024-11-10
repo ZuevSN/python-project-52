@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'task_manager',
     'task_manager.users',
     'task_manager.statuses',
+    'task_manager.tasks',
     'task_manager.labels',
     'django_bootstrap5',
 ]
@@ -151,3 +152,5 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOCALE_PATHS = [BASE_DIR / 'locale']
+
+AUTH_USER_MODEL = 'users.CustomUser'

@@ -11,6 +11,11 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from .models import Label
 from .forms import LabelForm
+from django.contrib.messages.views import SuccessMessageMixin
+from task_manager.mixins import (
+    CustomLoginRequiredMixin,
+    DeleteProtectionMixin
+)
 
 
 class LabelListView(ListView):
@@ -19,7 +24,11 @@ class LabelListView(ListView):
     context_object_name = 'labels'
 
 
-class LabelCreateView(CreateView):
+class LabelCreateView(
+    SuccessMessageMixin,
+    CustomLoginRequiredMixin,
+    CreateView
+):
     model = Label
     template_name = 'form.html'
     form_class = LabelForm
@@ -31,7 +40,11 @@ class LabelCreateView(CreateView):
     }
 
 
-class LabelUpdateView(UpdateView):
+class LabelUpdateView(
+    SuccessMessageMixin,
+    CustomLoginRequiredMixin,
+    UpdateView
+):
     model = Label
     template_name = 'form.html'
     form_class = LabelForm
@@ -42,10 +55,17 @@ class LabelUpdateView(UpdateView):
         'button_text': _('Update')
     }
 
-class LabelDeleteView(DeleteView):
+class LabelDeleteView(
+    SuccessMessageMixin,
+    CustomLoginRequiredMixin,
+    DeleteProtectionMixin,
+    DeleteView
+):
     model = Label
-    template_name = 'form.html'
+    template_name = 'delete_form.html'
     form_class = LabelForm
+    protect_message = _('Cannot delete because it is in use')
+    protect_url = reverse_lazy('labels')
     success_url = reverse_lazy('labels')
     success_message = _('Label deleted')
     extra_context = {

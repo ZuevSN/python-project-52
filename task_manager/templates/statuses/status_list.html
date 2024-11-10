@@ -2,6 +2,7 @@
 {% bootstrap_css %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
+{% include 'header.html' %}
 <div class="container mt-4">
     <h2 class="mb-4">{% trans "Statuses" %}</h2>
     <div class="d-flex justify-content-left my-4">
@@ -32,3 +33,4 @@
         </tbody>
     </table>
     </div>
+{% include 'footer.html' %}
