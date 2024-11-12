@@ -28,7 +28,21 @@ class CustomUserPassesTestMixin(UserPassesTestMixin):
         messages.error(self.request, self.protect_message)
         return redirect(self.protect_url)
 
-class DeleteProtectionMixin(DeleteView):
+class DeleteProtectionUserMixin(UserPassesTestMixin):
+    protect_message = None
+    protect_url = None
+
+    def test_func(self):
+        obj = self.get_object()
+        print(f":User  {self.request.user}, Initiator: {obj.initiator}")
+        return obj is not None and obj.initiator == self.request.user
+    
+    def handle_no_permission(self):
+        print(f":User  {self.request.user}")
+        messages.error(self.request, self.protect_message)
+        return redirect(self.protect_url)
+
+class DeleteProtectionMixin:
     protect_message = None
     protect_url = None
 

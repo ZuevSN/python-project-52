@@ -11,7 +11,6 @@ class TaskForm(forms.ModelForm):
             'name',
             'description',
             'executor',
-            'initiator',
             'status',
             'labels'
         ]

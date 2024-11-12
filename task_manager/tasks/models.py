@@ -23,12 +23,14 @@ class Task(models.Model):
     executor = models.ForeignKey(
         CustomUser,
         on_delete=models.PROTECT,
+        blank=True,
+        null=True,
         verbose_name=_('Executor'),
         related_name='executor'
     )
     initiator = models.ForeignKey(
         CustomUser,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name=_('Initiator'),
         related_name='initiator'
     )

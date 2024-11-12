@@ -1,17 +1,39 @@
-<h1>Список пользователей</h1>
-<table>
-    <tr>
-        <th>Имя</th>
-        <th>Действия</th>
-    </tr>
-    {% for user in users %}
-    <tr>
-        <td>{{ user.username }}</td>
-        <td>
-            <a href="{% url 'edit_user' user.id %}">Редактировать</a>
-            <a href="{% url 'delete_user' user.id %}">Удалить</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-<a href="{% url 'create_user' %}">Создать пользователя</a>
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% include 'header.html' %}
+<div class="container mt-4">
+    <h2 class="mb-4">{% trans "Users" %}</h2>
+    <div class="d-flex justify-content-left my-4">
+        <a class="btn btn-primary btn-sm" href="{% url 'create_user' %}" role="button">{% translate "Create user" %}</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{% trans "ID" %}</th>
+            <th>{% trans "Login" %}</th>
+            <th>{% trans "Full name" %}</th>
+            <th>{% trans "Creation Date" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.get_full_name }}</td>
+                <td>{{ user.date_joined }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at }}</td>
+                <td>
+                    <a href="{% url 'edit_user' pk=user.id %}">{% trans "Update" %}</a>
+                    <br>
+                    <a href="{% url 'delete_user' pk=user.id %}">{% trans "Delete" %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% include 'footer.html' %}

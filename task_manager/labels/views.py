@@ -63,11 +63,11 @@ class LabelDeleteView(
 ):
     model = Label
     template_name = 'delete_form.html'
-    form_class = LabelForm
-    protect_message = _('Cannot delete because it is in use')
-    protect_url = reverse_lazy('labels')
+#    form_class = LabelForm
     success_url = reverse_lazy('labels')
     success_message = _('Label deleted')
+    protect_message = _('Cannot delete because it is in use')
+    protect_url = reverse_lazy('labels')
     extra_context = {
         'header': _('Delete label'),
         'button_text': _('Delete')

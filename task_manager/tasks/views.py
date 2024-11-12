@@ -14,17 +14,24 @@ from .forms import TaskForm
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import (
     CustomLoginRequiredMixin,
-    CustomUserPassesTestMixin
+    CustomUserPassesTestMixin,
+    DeleteProtectionUserMixin
 )
+from django_filters.views import FilterView
+from .filters import TaskFilter
 
 
 class TaskListView(
     CustomLoginRequiredMixin,
-    ListView
+    FilterView
 ):
     model = Task
+    filterset_class = TaskFilter
     template_name = 'tasks/task_list.html'
     context_object_name = 'tasks'
+    extra_context = {
+        'button_text': _('Filter')
+    }
 
 
 class TaskCreateView(
@@ -41,6 +48,10 @@ class TaskCreateView(
         'header': _('Create task'),
         'button_text': _('Create')
     }
+
+    def form_valid(self, form):
+        form.instance.initiator = self.request.user
+        return super().form_valid(form)
 
 
 class TaskUpdateView(
@@ -61,7 +72,7 @@ class TaskUpdateView(
 class TaskDeleteView(
     SuccessMessageMixin,
     CustomLoginRequiredMixin,
-    CustomUserPassesTestMixin,
+    DeleteProtectionUserMixin,
     DeleteView
 ):
     model = Task

@@ -49,6 +49,10 @@ class UserUpdateView(
     success_url = reverse_lazy('users')
     protect_message = _("You don't have permissions to modify another user.")
     protect_url = reverse_lazy('users')
+    extra_context = {
+        'header': _('Edition user'),
+        'button_text': _('Edit')
+    }
 
 
 class UserDeleteView(
