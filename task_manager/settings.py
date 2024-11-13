@@ -109,6 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 3,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -154,3 +157,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+DATA_FOR_TEST = BASE_DIR / 'task_manager/fixtures/data.json'

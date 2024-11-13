@@ -1,0 +1,18 @@
+[
+    {
+        "model": "statuses.status",
+        "pk": 1,
+        "fields": {
+            "name": "new",
+            "created_at": "2024-11-11"
+        }
+    },
+    {
+        "model": "statuses.status",
+        "pk": 2,
+        "fields": {
+            "name": "in work",
+            "created_at": "2024-11-11"
+        }
+    }
+]

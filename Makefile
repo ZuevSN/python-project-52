@@ -3,7 +3,7 @@ install:
 	make static
 
 test:
-	poetry run pytest
+	python manage.py test
 
 lint:
 	poetry run flake8 task_manager
@@ -20,3 +20,10 @@ start:
 
 static:
 	python manage.py collectstatic
+
+inter_ru:
+	python manage.py makemessages -l ru
+
+migr:
+	python manage.py makemigrations
+	python manage.py migrate

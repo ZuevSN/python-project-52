@@ -1,0 +1,29 @@
+{
+    "user": 
+        {
+            "first_name": "Sidor",
+            "last_name": "Sidorov",
+            "username": "SidorovS",
+            "password1": "q12",
+            "password2": "q12"
+        }
+    ,
+    "updated_user": 
+        {
+            "first_name": "Sidor",
+            "last_name": "Nesidorov",
+            "username": "NesidorovS",
+            "password1": "q12",
+            "password2": "q12"
+        }
+    ,
+    "status": 
+        {
+            "name": "finished"
+        }
+    ,
+    "updated_status": 
+        {
+            "name": "closed"
+        }
+}

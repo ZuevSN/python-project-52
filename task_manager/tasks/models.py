@@ -30,7 +30,7 @@ class Task(models.Model):
     )
     initiator = models.ForeignKey(
         CustomUser,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name=_('Initiator'),
         related_name='initiator'
     )

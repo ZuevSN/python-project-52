@@ -12,7 +12,8 @@ from .forms import CustomUserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import (
     CustomLoginRequiredMixin,
-    CustomUserPassesTestMixin
+    CustomUserPassesTestMixin,
+    DeleteProtectionMixin
 )
 
 
@@ -47,7 +48,8 @@ class UserUpdateView(
     form_class = CustomUserCreationForm
     template_name = 'form.html'
     success_url = reverse_lazy('users')
-    protect_message = _("You don't have permissions to modify another user.")
+    success_message = _('User updated')
+    protect_message = _("You dont have permissions to modify another user.")
     protect_url = reverse_lazy('users')
     extra_context = {
         'header': _('Edition user'),
@@ -59,13 +61,14 @@ class UserDeleteView(
     SuccessMessageMixin,
     CustomLoginRequiredMixin,
     CustomUserPassesTestMixin,
-    DeleteView
+    DeleteView,
+    DeleteProtectionMixin
 ):
     model = CustomUser
     template_name = 'delete_form.html'
     success_url = reverse_lazy('users')
     success_message = _('User deleted')
-    protect_message = _("You don't have permissions to modify another user.")
+    protect_message = _("You dont have permissions to modify another user.")
     protect_url = reverse_lazy('users')
     extra_context = {
         'header': _('Delete user'),

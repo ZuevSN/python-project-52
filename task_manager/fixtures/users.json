@@ -6,7 +6,7 @@
             "first_name": "Ivan",
             "last_name": "Ivanov",
             "username": "IvanovI",
-            "password": "123"
+            "password": "q12"
         }
     },
     {
@@ -16,17 +16,7 @@
             "first_name": "Petr",
             "last_name": "Petrov",
             "username": "PetrovP",
-            "password": "123"
-        }
-    },
-    {
-        "model": "users.customuser",
-        "pk": 3,
-        "fields": {
-            "first_name": "Sidor",
-            "last_name": "Sidorov",
-            "username": "SidorovS",
-            "password": "123"
+            "password": "q12"
         }
     }
 ]
