@@ -6,8 +6,7 @@
             "username": "SidorovS",
             "password1": "q12",
             "password2": "q12"
-        }
-    ,
+        },
     "updated_user": 
         {
             "first_name": "Sidor",
@@ -15,15 +14,24 @@
             "username": "NesidorovS",
             "password1": "q12",
             "password2": "q12"
-        }
-    ,
+        },
     "status": 
         {
             "name": "finished"
-        }
-    ,
+        },
     "updated_status": 
         {
             "name": "closed"
+        },
+    "task": 
+        {
+            "name": "Do project-52",
+            "status": 1
+        },
+    "updated_task": 
+        {
+            "name": "Do all projects",
+            "executor": 2,
+            "status": 2
         }
 }

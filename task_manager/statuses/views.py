@@ -1,25 +1,22 @@
-from django.shortcuts import render
 from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
     DeleteView
 )
-from django.views import View
-
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from .models import Status
 from .forms import StatusForm
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import (
-    CustomLoginRequiredMixin,
+    NotLoggedMixin,
     DeleteProtectionMixin
 )
 
 
 class StatusListView(
-    CustomLoginRequiredMixin,
+    NotLoggedMixin,
     ListView
 ):
     model = Status
@@ -29,14 +26,14 @@ class StatusListView(
 
 class StatusCreateView(
     SuccessMessageMixin,
-    CustomLoginRequiredMixin,
+    NotLoggedMixin,
     CreateView
 ):
     model = Status
     template_name = 'form.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
-    success_message = _('Status created')
+    success_message = _('The status was created successfully')
     extra_context = {
         'header': _('Create status'),
         'button_text': _('Create')
@@ -45,34 +42,35 @@ class StatusCreateView(
 
 class StatusUpdateView(
     SuccessMessageMixin,
-    CustomLoginRequiredMixin,
+    NotLoggedMixin,
     UpdateView
 ):
     model = Status
     template_name = 'form.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
-    success_message = _('Status updated')
+    success_message = _('The status has been successfully changed')
     extra_context = {
         'header': _('Update status'),
         'button_text': _('Update')
     }
 
+
 class StatusDeleteView(
-    SuccessMessageMixin,
-    CustomLoginRequiredMixin,
     DeleteProtectionMixin,
+    SuccessMessageMixin,
+    NotLoggedMixin,
     DeleteView
 ):
     model = Status
     template_name = 'delete_form.html'
     success_url = reverse_lazy('statuses')
-    success_message = _('Status deleted')
-    protect_message = _('Cannot delete because it is in use')
+    success_message = _('The status was successfully deleted')
+    protect_message = _(
+        'It is not possible to delete, because it is being used'
+    )
     protect_url = reverse_lazy('statuses')
     extra_context = {
         'header': _('Delete status'),
         'button_text': _('Yes, delete')
     }
-
-

@@ -9,10 +9,11 @@ class UniversalForm(forms.ModelForm):
         self.Meta.fields = [
             field.name for field in model._meta.get_fields()
         ]
-    
+
     class Meta:
         model = None
         fields = []
+
 
 class StatusForm(forms.ModelForm):
 
@@ -20,18 +21,20 @@ class StatusForm(forms.ModelForm):
         model = Status
         fields = ['name']
 
+
 class StatusesForm(forms.Form):
+
     def __init__(self, *args, **kwargs):
         super(StatusesForm, self).__init__(*args, **kwargs)
         self.statuses = Status.objects.all()
         for status in self.statuses:
             self.fields[f'status_{status.id}'] = forms.CharField(
                 label=status.name,
-                initial=status.created_at.strftime('%Y-%m-%d %H:%M:%S'),  # Форматируем дату
+                initial=status.created_at.strftime('%Y-%m-%d %H:%M:%S'),
                 disabled=True,
             )
             self.fields[f'created_at_{status.id}'] = forms.CharField(
-                label='Created At',
+                label=_('Created At'),
                 initial=status.created_at.strftime('%Y-%m-%d %H:%M:%S'),
                 disabled=True,
             )

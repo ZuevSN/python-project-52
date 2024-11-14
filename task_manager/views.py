@@ -15,6 +15,7 @@ from django.contrib import messages
 class IndexView(TemplateView):
     template_name = 'index.html'
 
+
 class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'form.html'
     form_class = AuthenticationForm
@@ -24,6 +25,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
         'button_text': _('Sign in')
     }
     next_page = reverse_lazy('index')
+
 
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('index')

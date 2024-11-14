@@ -6,11 +6,12 @@ from task_manager.tasks.models import Task
 from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
 
+
 class TaskFilter(df.FilterSet):
     user_tasks = df.BooleanFilter(
-        label = _('show my tasks'),
-        method = 'show_user_tasks',
-        widget = forms.CheckboxInput()
+        label=_('show my tasks'),
+        method='show_user_tasks',
+        widget=forms.CheckboxInput()
     )
     status = df.ModelChoiceFilter(
         queryset=Status.objects.all(),
@@ -26,12 +27,12 @@ class TaskFilter(df.FilterSet):
     )
 
     def show_user_tasks(
-        self, queryset, name_filter, check   
+        self, queryset, name_filter, check
     ):
         if check:
             return queryset.filter(initiator=self.request.user)
         return queryset
-    
+
     class Meta:
         model = Task
-        fields = ['user_tasks','status','executor','labels']
+        fields = ['user_tasks', 'status', 'executor', 'labels']

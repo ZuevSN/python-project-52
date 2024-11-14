@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import (
     ListView,
     CreateView,
@@ -11,8 +10,8 @@ from .models import CustomUser
 from .forms import CustomUserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import (
-    CustomLoginRequiredMixin,
-    CustomUserPassesTestMixin,
+    NotLoggedMixin,
+    PermitModifyOtherUser,
     DeleteProtectionMixin
 )
 
@@ -40,8 +39,8 @@ class UserCreateView(
 
 class UserUpdateView(
     SuccessMessageMixin,
-    CustomLoginRequiredMixin,
-    CustomUserPassesTestMixin,
+    NotLoggedMixin,
+    PermitModifyOtherUser,
     UpdateView
 ):
     model = CustomUser
@@ -58,11 +57,11 @@ class UserUpdateView(
 
 
 class UserDeleteView(
+    DeleteProtectionMixin,
     SuccessMessageMixin,
-    CustomLoginRequiredMixin,
-    CustomUserPassesTestMixin,
-    DeleteView,
-    DeleteProtectionMixin
+    NotLoggedMixin,
+    PermitModifyOtherUser,
+    DeleteView
 ):
     model = CustomUser
     template_name = 'delete_form.html'

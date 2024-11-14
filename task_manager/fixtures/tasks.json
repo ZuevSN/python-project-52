@@ -5,7 +5,7 @@
         "fields": {
             "name": "DO Tests for project",
             "initiator": 1,
-            "executor": null,
+            "executor": 1,
             "status": 1,
             "labels": [1],
             "description": "BLA-BLA-BLA",
@@ -17,7 +17,7 @@
         "pk": 2,
         "fields": {
             "name": "fix project",
-            "initiator": 1,
+            "initiator": 2,
             "executor": 2,
             "status": 2,
             "labels": [2],

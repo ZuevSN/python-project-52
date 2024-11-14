@@ -1,7 +1,0 @@
-<h1>Создать пользователя</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Создать</button>
-</form>
-<a href="{% url 'users' %}">Назад к списку пользователей</a>
