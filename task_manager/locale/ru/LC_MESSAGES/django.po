@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 15:01+0300\n"
+"POT-Creation-Date: 2024-11-16 16:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,9 +40,35 @@ msgstr "Дата создания"
 msgid "Labels"
 msgstr "Метки"
 
-#: .\task_manager\labels\views.py:33
+#: .\task_manager\labels\tests.py:36 .\task_manager\mixins.py:14
+#: .\task_manager\statuses\tests.py:36 .\task_manager\users\tests.py:52
+#: .\task_manager\users\tests.py:93
+msgid "You are not logged in! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста авторизуйтесь"
+
+#: .\task_manager\labels\tests.py:53 .\task_manager\labels\views.py:33
 msgid "The label was created successfully"
 msgstr "Метка успешно создана"
+
+#: .\task_manager\labels\tests.py:70 .\task_manager\labels\views.py:49
+msgid "The label has been successfully changed"
+msgstr "Метка успещно изменена"
+
+#: .\task_manager\labels\tests.py:84 .\task_manager\labels\tests.py:107
+#: .\task_manager\labels\views.py:72 .\task_manager\statuses\tests.py:83
+#: .\task_manager\statuses\tests.py:106 .\task_manager\statuses\views.py:75
+#: .\task_manager\tasks\tests.py:76 .\task_manager\tasks\views.py:88
+#: .\task_manager\users\tests.py:137 .\task_manager\users\views.py:72
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: .\task_manager\labels\tests.py:95 .\task_manager\labels\views.py:65
+msgid "The label was successfully deleted"
+msgstr "Метка успешно удалена"
+
+#: .\task_manager\labels\tests.py:118 .\task_manager\labels\views.py:67
+msgid "It is not possible to delete the label because it is being used"
+msgstr "Невозможно изменить метку, так как она используется"
 
 #: .\task_manager\labels\views.py:35
 msgid "Creating a label"
@@ -53,10 +79,6 @@ msgstr "Создание метки"
 msgid "Create"
 msgstr "Создать"
 
-#: .\task_manager\labels\views.py:49
-msgid "The label has been successfully changed"
-msgstr "Метка успещно изменена"
-
 #: .\task_manager\labels\views.py:51
 msgid "Changing the label"
 msgstr "Изменение метки"
@@ -66,31 +88,9 @@ msgstr "Изменение метки"
 msgid "Change"
 msgstr "Изменить"
 
-#: .\task_manager\labels\views.py:65
-msgid "The label was successfully deleted"
-msgstr "Метка успешно удалена"
-
-#: .\task_manager\labels\views.py:67
-msgid "It is not possible to delete the label because it is being used"
-msgstr "Невозможно изменить метку, так как она используется"
-
 #: .\task_manager\labels\views.py:71
 msgid "Deleting a label"
 msgstr "Удаление метки"
-
-#: .\task_manager\labels\views.py:72
-#: .\task_manager\templates\labels\label_list.html:25
-#: .\task_manager\templates\statuses\status_list.html:25
-#: .\task_manager\templates\tasks\task_info.html:48
-#: .\task_manager\templates\tasks\task_list.html:38
-#: .\task_manager\templates\users\user_list.html:26
-msgid "Delete"
-msgstr "Удалить"
-
-#: .\task_manager\mixins.py:14 .\task_manager\statuses\tests.py:35
-#: .\task_manager\users\tests.py:52 .\task_manager\users\tests.py:93
-msgid "You are not logged in! Please log in."
-msgstr "Выне авторизованы! Пожалуйста авторизуйтесь"
 
 #: .\task_manager\mixins.py:28 .\task_manager\users\tests.py:66
 #: .\task_manager\users\tests.py:108
@@ -110,38 +110,33 @@ msgstr "Дата создания"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: .\task_manager\statuses\tests.py:52 .\task_manager\statuses\views.py:36
+#: .\task_manager\statuses\tests.py:53 .\task_manager\statuses\views.py:36
 msgid "The status was created successfully"
 msgstr "Статус успешно создан"
+
+#: .\task_manager\statuses\tests.py:69 .\task_manager\statuses\views.py:52
+msgid "The status has been successfully changed"
+msgstr "Статус успешно изменен"
+
+#: .\task_manager\statuses\tests.py:94 .\task_manager\statuses\views.py:68
+msgid "The status was successfully deleted"
+msgstr "Статус успешно удален"
+
+#: .\task_manager\statuses\tests.py:117 .\task_manager\statuses\views.py:70
+msgid "It is not possible to delete the status because it is being used"
+msgstr "Невозможно удалить статус, так как он используется"
 
 #: .\task_manager\statuses\views.py:38
 msgid "Creating a status"
 msgstr "Создание статуса"
 
-#: .\task_manager\statuses\views.py:52
-msgid "The status has been successfully changed"
-msgstr "Статус успешно изменен"
-
 #: .\task_manager\statuses\views.py:54
 msgid "Changing the status"
 msgstr "Изменение статуса"
 
-#: .\task_manager\statuses\views.py:68
-msgid "The status was successfully deleted"
-msgstr "Статус успешно удален"
-
-#: .\task_manager\statuses\views.py:70
-msgid "It is not possible to delete the status because it is being used"
-msgstr "Невозможно удалить статус, так как он используется"
-
 #: .\task_manager\statuses\views.py:74
 msgid "Deleting a status"
 msgstr "Удаление статуса"
-
-#: .\task_manager\statuses\views.py:75 .\task_manager\tasks\tests.py:76
-#: .\task_manager\tasks\views.py:88 .\task_manager\users\views.py:72
-msgid "Yes, delete"
-msgstr "Да, удалить"
 
 #: .\task_manager\tasks\filters.py:12
 msgid "show my tasks"
@@ -186,10 +181,9 @@ msgstr "Статус"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: .\task_manager\tasks\tests.py:24
-#: .\task_manager\templates\tasks\task_list.html:7
-msgid "Create task"
-msgstr "Создать задачу"
+#: .\task_manager\tasks\tests.py:24 .\task_manager\tasks\views.py:51
+msgid "Creating a task"
+msgstr "Создание задачи"
 
 #: .\task_manager\tasks\tests.py:35 .\task_manager\tasks\views.py:49
 msgid "The task was created successfully"
@@ -207,10 +201,6 @@ msgstr "Задача успешно удалена"
 msgid "Filter"
 msgstr "Показать"
 
-#: .\task_manager\tasks\views.py:51
-msgid "Creating a task"
-msgstr "Создание задачи"
-
 #: .\task_manager\tasks\views.py:71
 msgid "Changing the task"
 msgstr "Изменение задачи"
@@ -218,6 +208,10 @@ msgstr "Изменение задачи"
 #: .\task_manager\tasks\views.py:87
 msgid "Deleting a task"
 msgstr "Удаление задачи"
+
+#: .\task_manager\templates\delete_form.html:8
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
 
 #: .\task_manager\templates\header.html:14
 msgid "Task manager"
@@ -278,6 +272,14 @@ msgstr "Дата создания"
 msgid "Update"
 msgstr "Изменить"
 
+#: .\task_manager\templates\labels\label_list.html:25
+#: .\task_manager\templates\statuses\status_list.html:25
+#: .\task_manager\templates\tasks\task_info.html:48
+#: .\task_manager\templates\tasks\task_list.html:38
+#: .\task_manager\templates\users\user_list.html:26
+msgid "Delete"
+msgstr "Удалить"
+
 #: .\task_manager\templates\statuses\status_list.html:7
 msgid "Create status"
 msgstr "Создать статус"
@@ -289,6 +291,10 @@ msgstr "Просмотр задачи"
 #: .\task_manager\templates\tasks\task_info.html:31
 msgid "Date of creation"
 msgstr "Дата создания"
+
+#: .\task_manager\templates\tasks\task_list.html:7
+msgid "Create task"
+msgstr "Создать задачу"
 
 #: .\task_manager\templates\users\user_list.html:7
 msgid "Create user"
@@ -347,9 +353,13 @@ msgstr "Пользователь успешно создан"
 msgid "The user has been successfully changed"
 msgstr "Пользователь успешно изменен"
 
-#: .\task_manager\users\tests.py:122 .\task_manager\users\views.py:67
+#: .\task_manager\users\tests.py:124 .\task_manager\users\views.py:67
 msgid "The user was successfully deleted"
 msgstr "Пользователь успешно удален"
+
+#: .\task_manager\users\tests.py:148 .\task_manager\users\views.py:68
+msgid "It is not possible to delete a user because it is being used"
+msgstr "Невозможно удалить пользователя, так как  он используется"
 
 #: .\task_manager\users\views.py:35
 msgid "Creating a user"
@@ -358,10 +368,6 @@ msgstr "Создание пользователя"
 #: .\task_manager\users\views.py:52
 msgid "Changing the user"
 msgstr "Изменение пользователя"
-
-#: .\task_manager\users\views.py:68
-msgid "It is not possible to delete a user because it is being used"
-msgstr "Невозможно удалить пользователя, так как  он используется"
 
 #: .\task_manager\users\views.py:71
 msgid "Deleting a user"

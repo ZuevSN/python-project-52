@@ -63,7 +63,7 @@ class UsersTestCase(TestCase):
         self.assertRedirects(response, reverse_lazy('users'))
         self.assertContains(
             response,
-            _("You dont have permissions to modify another user.")
+            _('You dont have permissions to modify another user.')
         )
         response = self.client.get(
             reverse_lazy('update_user', kwargs={'pk': 3}),
@@ -78,7 +78,7 @@ class UsersTestCase(TestCase):
         )
         self.assertRedirects(response, reverse_lazy('users'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, _("The user has been successfully changed"))
+        self.assertContains(response, _('The user has been successfully changed'))
         self.assertEqual(CustomUser.objects.get(pk=3).username, 'NesidorovS')
 
     def test_delete_user(self):
@@ -105,7 +105,7 @@ class UsersTestCase(TestCase):
         self.assertRedirects(response, reverse_lazy('users'))
         self.assertContains(
             response,
-            _("You dont have permissions to modify another user.")
+            _('You dont have permissions to modify another user.')
         )
 
         response = self.client.get(
@@ -114,11 +114,36 @@ class UsersTestCase(TestCase):
         )
         self.assertTemplateUsed(response, 'delete_form.html')
         self.assertEqual(response.status_code, 200)
+
         response = self.client.post(
             reverse_lazy('delete_user', kwargs={'pk': 3}),
             follow=True
         )
+
         self.assertRedirects(response, reverse_lazy('users'))
-        self.assertContains(response, _("The user was successfully deleted"))
+        self.assertContains(response, _('The user was successfully deleted'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['users']), 2)
+
+        self.client.force_login(CustomUser.objects.get(pk=1))
+        response = self.client.get(
+            reverse_lazy('delete_user', kwargs={'pk': 1}),
+            follow=True
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            _('Yes, delete')
+        )
+
+        response = self.client.post(
+            reverse_lazy('delete_user', kwargs={'pk': 1}),
+            follow=True
+        )
+
+        self.assertRedirects(response, reverse_lazy('users'))
+        self.assertContains(
+            response,
+            _('It is not possible to delete a user because it is being used')
+        )

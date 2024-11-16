@@ -33,5 +33,13 @@
             "name": "Do all projects",
             "executor": 2,
             "status": 2
+        },
+    "label": 
+        {
+            "name": "cherrypy"
+        },
+    "updated_label": 
+        {
+            "name": "pandas"
         }
 }

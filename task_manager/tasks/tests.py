@@ -21,7 +21,7 @@ class TasksTestCase(TestCase):
         response = self.client.get(reverse_lazy('create_task'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, _('Create task'))
+        self.assertContains(response, _('Creating a task'))
 
         response = self.client.post(
             reverse_lazy('create_task'),
@@ -73,7 +73,7 @@ class TasksTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            _("Yes, delete")
+            _('Yes, delete')
         )
 
         response = self.client.post(
@@ -102,3 +102,15 @@ class TasksTestCase(TestCase):
 
         self.assertContains(response, 'DO Tests for project')
         self.assertContains(response, 'fix project')
+
+    def test_task_detail(self):
+        response = self.client.get(
+            reverse_lazy('view_task', kwargs={'pk': 1}),
+            follow=True
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'DO Tests for project')
+        self.assertContains(response, 'Ivan Ivanov')
+        self.assertContains(response, 'new')
+        self.assertContains(response, 'django')

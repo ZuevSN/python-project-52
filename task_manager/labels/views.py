@@ -69,5 +69,5 @@ class LabelDeleteView(
     delete_protection_url = reverse_lazy('labels')
     extra_context = {
         'header': _('Deleting a label'),
-        'button_text': _('Delete')
+        'button_text': _('Yes, delete')
     }
