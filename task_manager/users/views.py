@@ -32,7 +32,7 @@ class UserCreateView(
     success_url = reverse_lazy('login')
     success_message = _('The user was created successfully')
     extra_context = {
-        'header': _('Create user'),
+        'header': _('Creating a user'),
         'button_text': _('Create')
     }
 
@@ -49,8 +49,8 @@ class UserUpdateView(
     success_url = reverse_lazy('users')
     success_message = _('The user has been successfully changed')
     extra_context = {
-        'header': _('Edition user'),
-        'button_text': _('Edit')
+        'header': _('Changing the user'),
+        'button_text': _('Change')
     }
 
 
@@ -68,6 +68,6 @@ class UserDeleteView(
     delete_protection_message = _('It is not possible to delete a user because it is being used')
     delete_protection_url = reverse_lazy('users')
     extra_context = {
-        'header': _('Delete user'),
+        'header': _('Deleting a user'),
         'button_text': _('Yes, delete')
     }

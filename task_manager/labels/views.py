@@ -32,7 +32,7 @@ class LabelCreateView(
     success_url = reverse_lazy('labels')
     success_message = _('The label was created successfully')
     extra_context = {
-        'header': _('Create label'),
+        'header': _('Creating a label'),
         'button_text': _('Create')
     }
 
@@ -48,8 +48,8 @@ class LabelUpdateView(
     success_url = reverse_lazy('labels')
     success_message = _('The label has been successfully changed')
     extra_context = {
-        'header': _('Update label'),
-        'button_text': _('Update')
+        'header': _('Changing the label'),
+        'button_text': _('Change')
     }
 
 
@@ -68,6 +68,6 @@ class LabelDeleteView(
     )
     delete_protection_url = reverse_lazy('labels')
     extra_context = {
-        'header': _('Delete label'),
+        'header': _('Deleting a label'),
         'button_text': _('Delete')
     }

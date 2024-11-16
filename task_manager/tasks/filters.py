@@ -35,4 +35,4 @@ class TaskFilter(df.FilterSet):
 
     class Meta:
         model = Task
-        fields = ['user_tasks', 'status', 'executor', 'labels']
+        fields = ['status', 'executor', 'labels', 'user_tasks']

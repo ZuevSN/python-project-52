@@ -48,7 +48,7 @@ class TaskCreateView(
     success_url = reverse_lazy('tasks')
     success_message = _('The task was created successfully')
     extra_context = {
-        'header': _('Create task'),
+        'header': _('Creating a task'),
         'button_text': _('Create')
     }
 
@@ -68,8 +68,8 @@ class TaskUpdateView(
     success_url = reverse_lazy('tasks')
     success_message = _('The task has been successfully changed')
     extra_context = {
-        'header': _('Update task'),
-        'button_text': _('Update')
+        'header': _('Changing the task'),
+        'button_text': _('Change')
     }
 
 
@@ -84,6 +84,6 @@ class TaskDeleteView(
     success_url = reverse_lazy('tasks')
     success_message = _('The task was successfully deleted')
     extra_context = {
-        'header': _('Delete task'),
+        'header': _('Deleting a task'),
         'button_text': _('Yes, delete')
     }

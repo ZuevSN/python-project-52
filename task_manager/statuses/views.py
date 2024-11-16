@@ -35,7 +35,7 @@ class StatusCreateView(
     success_url = reverse_lazy('statuses')
     success_message = _('The status was created successfully')
     extra_context = {
-        'header': _('Create status'),
+        'header': _('Creating a status'),
         'button_text': _('Create')
     }
 
@@ -51,8 +51,8 @@ class StatusUpdateView(
     success_url = reverse_lazy('statuses')
     success_message = _('The status has been successfully changed')
     extra_context = {
-        'header': _('Update status'),
-        'button_text': _('Update')
+        'header': _('Changing the status'),
+        'button_text': _('Change')
     }
 
 
@@ -71,6 +71,6 @@ class StatusDeleteView(
     )
     delete_protection_url = reverse_lazy('statuses')
     extra_context = {
-        'header': _('Delete status'),
+        'header': _('Deleting a status'),
         'button_text': _('Yes, delete')
     }
