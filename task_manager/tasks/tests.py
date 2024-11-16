@@ -46,7 +46,6 @@ class TasksTestCase(TestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-#        print(response.content.decode())
         self.assertContains(
             response,
             _('The task has been successfully changed')
@@ -60,11 +59,10 @@ class TasksTestCase(TestCase):
             reverse_lazy('delete_task', kwargs={'pk': 2}),
             follow=True
         )
-
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            _('Only the initiator of the task can delete it.')
+            _('Only the author of the task can delete it.')
         )
 
         response = self.client.get(

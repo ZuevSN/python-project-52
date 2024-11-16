@@ -1,4 +1,5 @@
 from django.views.generic import (
+    DetailView,
     CreateView,
     UpdateView,
     DeleteView
@@ -10,11 +11,18 @@ from .forms import TaskForm
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.mixins import (
     NotLoggedMixin,
-    DeleteProtectionUserMixin
+    DeleteProtectionTaskMixin
 )
 from django_filters.views import FilterView
 from .filters import TaskFilter
 
+
+class TaskDetailView(
+    NotLoggedMixin,
+    DetailView
+):
+    model = Task
+    template_name = 'tasks/task_info.html'
 
 class TaskListView(
     NotLoggedMixin,
@@ -30,8 +38,8 @@ class TaskListView(
 
 
 class TaskCreateView(
-    SuccessMessageMixin,
     NotLoggedMixin,
+    SuccessMessageMixin,
     CreateView
 ):
     model = Task
@@ -45,7 +53,7 @@ class TaskCreateView(
     }
 
     def form_valid(self, form):
-        form.instance.initiator = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
@@ -64,30 +72,17 @@ class TaskUpdateView(
         'button_text': _('Update')
     }
 
-#    def form_valid(self, form):
-#        response = super().form_valid(form)
-#        print("Form is valid. Task has been updated.")
-#        print("Success message:", self.get_success_message(form))
-        
-#        return response
-    
-#    def form_invalid(self, form):
-#        print("Form is invalid. Errors:", form.errors)
-#        return super().form_invalid(form)
-
 
 class TaskDeleteView(
-    SuccessMessageMixin,
     NotLoggedMixin,
-    DeleteProtectionUserMixin,
+    DeleteProtectionTaskMixin,
+    SuccessMessageMixin,
     DeleteView
 ):
     model = Task
     template_name = 'delete_form.html'
     success_url = reverse_lazy('tasks')
     success_message = _('The task was successfully deleted')
-    protect_message = _('Only the initiator of the task can delete it.')
-    protect_url = reverse_lazy('tasks')
     extra_context = {
         'header': _('Delete task'),
         'button_text': _('Yes, delete')

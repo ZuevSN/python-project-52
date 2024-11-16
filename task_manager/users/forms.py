@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
-from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 
@@ -11,10 +10,14 @@ class CustomUserCreationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['last_name'].required = True
         self.fields['first_name'].required = True
-        self.fields['password1'].help_text = mark_safe(
-            '<ul>'
-            f'<li>{_('Your password must contain at least 3 characters.')}</li>'
-            '</ul>'
+        self.fields['username'].help_text = _(
+            'Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'
+        )
+        self.fields['password1'].help_text = _(
+            'Your password must contain at least 3 characters.'
+        )
+        self.fields['password2'].help_text = _(
+            'Enter the same password as before, for verification.'
         )
 
     def clean_password1(self):

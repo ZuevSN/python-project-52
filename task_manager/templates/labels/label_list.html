@@ -8,8 +8,8 @@
     <div class="d-flex justify-content-left my-4">
         <a class="btn btn-primary btn-sm" href="{% url 'create_label' %}" role="button">{% translate "Create label" %}</a>
     </div>
-    <table class="table">
-        <thead class="table-dark">
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>{% trans "ID" %}</th>
             <th>{% trans "Name" %}</th>
@@ -22,11 +22,10 @@
             <tr>
                 <td>{{ label.id }}</td>
                 <td>{{ label.name }}</td>
-                <td>{{ label.created_at }}</td>
+                <td>{{ label.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
-                    <a href="{% url 'update_label' pk=label.id %}">{% trans "Update" %}</a>
-                    <br>
-                    <a href="{% url 'delete_label' pk=label.id %}">{% trans "Delete" %}</a>
+                    <a href="{% url 'update_label' pk=label.id %}"  class="btn btn-light btn-sm">{% trans "Update" %}</a>
+                    <a href="{% url 'delete_label' pk=label.id %}" class="btn btn-light btn-sm">{% trans "Delete" %}</a>
                 </td>
             </tr>
         {% endfor %}

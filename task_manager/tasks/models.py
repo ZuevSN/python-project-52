@@ -26,13 +26,13 @@ class Task(models.Model):
         blank=True,
         null=True,
         verbose_name=_('Executor'),
-        related_name='executor'
+        related_name='task_executed'
     )
-    initiator = models.ForeignKey(
+    author = models.ForeignKey(
         CustomUser,
         on_delete=models.PROTECT,
-        verbose_name=_('Initiator'),
-        related_name='initiator'
+        verbose_name=_('Author'),
+        related_name='task_initiated'
     )
     status = models.ForeignKey(
         Status,

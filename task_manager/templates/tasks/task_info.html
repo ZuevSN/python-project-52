@@ -1,0 +1,61 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% include 'header.html' %}
+<div class="container wrapper flex-grow-1">
+      
+
+
+    <h1 class="my-4">
+      
+        {% trans "Viewing a task" %}
+
+    </h1>
+    
+<div class="card">
+<div class="card-header bg-secondary text-white">
+  <h2>{{ task.id }}</h2>
+</div>
+<div class="card-body bg-light">
+  <p>{{ task.description }}</p>
+  <hr>
+  <div class="container">
+    <div class="row p-1">
+      <div class="col">{% trans "Author" %}</div>
+      <div class="col">{{ task.author }}</div>
+    </div>
+    <div class="row p-1">
+      <div class="col">{% trans "Executor" %}</div>
+      <div class="col">{{ task.executor }}</div>
+    </div>
+    <div class="row p-1">
+      <div class="col">{% trans "Status" %}</div>
+      <div class="col">{{ task.status }}</div>
+    </div>
+    <div class="row p-1">
+      <div class="col">{% trans "Date of creation" %}</div>
+      <div class="col">{{ task.created_at|date:"d.m.Y H:i" }}</div>
+    </div>
+    <div class="row p-1">
+      <div class="col">
+        <h6>{% trans "Labels" %}:</h6>
+        <ul>
+          {% for label in task.labels.all %}
+            <li>{{ label.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="row p-1">
+      <div class="col">
+        <a href="{% url 'update_task' pk=task.id %}">{% trans "Update" %}</a>
+        <br>
+        <a href="{% url 'delete_task' pk=task.id %}">{% trans "Delete" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% include 'footer.html' %}

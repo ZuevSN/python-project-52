@@ -11,42 +11,43 @@ from django.urls import reverse_lazy
 class NotLoggedMixin(LoginRequiredMixin):
 
     def dispatch(self, request, *args, **kwargs):
+        error_message = _('You are not logged in! Please log in.')
+        error_url = reverse_lazy('login')
         if not request.user.is_authenticated:
-            messages.error(request, _('You are not logged in! Please log in.'))
-            return redirect(reverse_lazy('login'))
+            messages.error(request, error_message)
+            return redirect(error_url)
         return super().dispatch(request, *args, **kwargs)
 
 
 class PermitModifyOtherUser(UserPassesTestMixin):
-    protect_message = None
-    protect_url = None
 
     def test_func(self):
         return self.get_object().id == self.request.user.id
 
     def handle_no_permission(self):
-        messages.error(self.request, self.protect_message)
-        return redirect(self.protect_url)
+        error_message = _('You dont have permissions to modify another user.')
+        error_url = reverse_lazy('users')
+        messages.error(self.request, error_message)
+        return redirect(error_url)
 
 
-class DeleteProtectionUserMixin(UserPassesTestMixin):
-    protect_message = None
-    protect_url = None
+class DeleteProtectionTaskMixin(UserPassesTestMixin):
 
     def test_func(self):
         obj = self.get_object()
-#        print(f":User  {self.request.user}, Initiator: {obj.initiator}")
-        return obj is not None and obj.initiator == self.request.user
+        return obj is not None and obj.author == self.request.user
 
     def handle_no_permission(self):
+        error_message = _('Only the author of the task can delete it.')
+        error_url = reverse_lazy('tasks')
         print(f":User  {self.request.user}")
-        messages.error(self.request, self.protect_message)
-        return redirect(self.protect_url)
+        messages.error(self.request, error_message)
+        return redirect(error_url)
 
 
 class DeleteProtectionMixin:
-    protect_message = None
-    protect_url = None
+    delete_protection_message = None
+    delete_protection_url = None
 
     def has_dependencies(self, obj):
         for related_field in obj._meta.get_fields():
@@ -64,8 +65,7 @@ class DeleteProtectionMixin:
     def post(self, request, *args, **kwargs):
         obj = self.get_object()
         if self.has_dependencies(obj):
-            messages.error(request, self.protect_message)
-            return redirect(self.protect_url)
+            messages.error(request, self.delete_protection_message)
+            return redirect(self.delete_protection_url)
         else:
-            messages.success(request, _('test Label deleted'))
             return super().post(request, *args, **kwargs)

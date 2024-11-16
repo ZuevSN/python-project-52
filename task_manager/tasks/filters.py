@@ -30,7 +30,7 @@ class TaskFilter(df.FilterSet):
         self, queryset, name_filter, check
     ):
         if check:
-            return queryset.filter(initiator=self.request.user)
+            return queryset.filter(author=self.request.user)
         return queryset
 
     class Meta:

@@ -30,7 +30,7 @@ class UserCreateView(
     form_class = CustomUserCreationForm
     template_name = 'form.html'
     success_url = reverse_lazy('login')
-    success_message = _('User created')
+    success_message = _('The user was created successfully')
     extra_context = {
         'header': _('Create user'),
         'button_text': _('Create')
@@ -47,9 +47,7 @@ class UserUpdateView(
     form_class = CustomUserCreationForm
     template_name = 'form.html'
     success_url = reverse_lazy('users')
-    success_message = _('User updated')
-    protect_message = _("You dont have permissions to modify another user.")
-    protect_url = reverse_lazy('users')
+    success_message = _('The user has been successfully changed')
     extra_context = {
         'header': _('Edition user'),
         'button_text': _('Edit')
@@ -57,18 +55,18 @@ class UserUpdateView(
 
 
 class UserDeleteView(
-    DeleteProtectionMixin,
-    SuccessMessageMixin,
     NotLoggedMixin,
     PermitModifyOtherUser,
+    DeleteProtectionMixin,
+    SuccessMessageMixin,
     DeleteView
 ):
     model = CustomUser
     template_name = 'delete_form.html'
     success_url = reverse_lazy('users')
-    success_message = _('User deleted')
-    protect_message = _("You dont have permissions to modify another user.")
-    protect_url = reverse_lazy('users')
+    success_message = _('The user was successfully deleted')
+    delete_protection_message = _('It is not possible to delete a user because it is being used')
+    delete_protection_url = reverse_lazy('users')
     extra_context = {
         'header': _('Delete user'),
         'button_text': _('Yes, delete')

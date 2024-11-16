@@ -16,30 +16,29 @@
             </form>
         </div>
     </div>
-    <table class="table">
-        <thead class="table-dark">
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>{% trans "ID" %}</th>
             <th>{% trans "Name" %}</th>
             <th>{% trans "Status" %}</th>
-            <th>{% trans "Initiator" %}</th>
+            <th>{% trans "Author" %}</th>
             <th>{% trans "Executor" %}</th>
             <th>{% trans "Creation Date" %}</th>
         </tr>
         </thead>
         <tbody>
             {% for task in tasks %}
-            <tr>
+            <tr class="align-middle">
                 <td>{{ task.id }}</td>
-                <td>{{ task.name }}</td>
+                <td><a href="{% url 'view_task' pk=task.id %}">{{ task.name }}</a></td>
                 <td>{{ task.status }}</td>
-                <td>{{ task.initiator }}</td>
+                <td>{{ task.author }}</td>
                 <td>{{ task.executor }}</td>
-                <td>{{ task.created_at }}</td>
+                <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
-                    <a href="{% url 'update_task' pk=task.id %}">{% trans "Update" %}</a>
-                    <br>
-                    <a href="{% url 'delete_task' pk=task.id %}">{% trans "Delete" %}</a>
+                    <a href="{% url 'update_task' pk=task.id %}" class="btn btn-light btn-sm">{% trans "Update" %}</a>
+                    <a href="{% url 'delete_task' pk=task.id %}" class="btn btn-light btn-sm">{% trans "Delete" %}</a>
                 </td>
             </tr>
         {% endfor %}
