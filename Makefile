@@ -1,12 +1,13 @@
 install:
 	poetry install
-	make static
+
+build: install static migrate
 
 test:
 	python manage.py test
 
 lint:
-	poetry run flake8 task_manager
+	poetry run flake8 task_manager --exclude migrations
 
 dev:
 	python manage.py runserver
@@ -24,6 +25,12 @@ static:
 inter_ru:
 	python manage.py makemessages -l ru
 
-migr:
+comp_loc:
+	python manage.py compilemessages
+
+migrate:
 	python manage.py makemigrations
 	python manage.py migrate
+
+test-coverage:
+	poetry run coverage run --source='.' manage.py test && poetry run coverage xml

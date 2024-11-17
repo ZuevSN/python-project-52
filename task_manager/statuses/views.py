@@ -67,7 +67,7 @@ class StatusDeleteView(
     success_url = reverse_lazy('statuses')
     success_message = _('The status was successfully deleted')
     delete_protection_message = _(
-        'It is not possible to delete the status because it is being used'
+        'It is not possible to delete status because it is being used'
     )
     delete_protection_url = reverse_lazy('statuses')
     extra_context = {

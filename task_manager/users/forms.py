@@ -11,7 +11,8 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields['last_name'].required = True
         self.fields['first_name'].required = True
         self.fields['username'].help_text = _(
-            'Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'
+            'Required. 150 characters or fewer. \
+                Letters, digits and @/./+/-/_ only.'
         )
         self.fields['password1'].help_text = _(
             'Your password must contain at least 3 characters.'
@@ -33,7 +34,9 @@ class CustomUserCreationForm(UserCreationForm):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError(_('The entered passwords do not match.'))
+            raise forms.ValidationError(_(
+                'The entered passwords do not match.'
+            ))
         return password2
 
     class Meta:

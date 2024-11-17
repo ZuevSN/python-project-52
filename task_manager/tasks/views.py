@@ -24,6 +24,7 @@ class TaskDetailView(
     model = Task
     template_name = 'tasks/task_info.html'
 
+
 class TaskListView(
     NotLoggedMixin,
     FilterView

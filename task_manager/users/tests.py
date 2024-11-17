@@ -78,8 +78,13 @@ class UsersTestCase(TestCase):
         )
         self.assertRedirects(response, reverse_lazy('users'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, _('The user has been successfully changed'))
-        self.assertEqual(CustomUser.objects.get(pk=3).username, 'NesidorovS')
+        self.assertContains(response, _(
+            'The user has been successfully changed'
+        ))
+        self.assertEqual(
+            CustomUser.objects.get(pk=3).username,
+            'NesidorovS'
+        )
 
     def test_delete_user(self):
         response = self.client.get(

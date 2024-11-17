@@ -26,7 +26,6 @@ class StatusesTestCase(TestCase):
         self.assertContains(response, 'on approval')
         self.assertEqual(len(response.context['statuses']), 3)
 
-
     def test_create_status(self):
         response = self.client.get(reverse_lazy('create_status'), follow=True)
 
@@ -55,6 +54,7 @@ class StatusesTestCase(TestCase):
         last_status = Status.objects.last()
 
         self.assertEqual(str(last_status), 'finished')
+
     def test_update_status(self):
         self.client.force_login(CustomUser.objects.get(pk=1))
         response = self.client.post(
@@ -114,5 +114,5 @@ class StatusesTestCase(TestCase):
         self.assertRedirects(response, reverse_lazy('statuses'))
         self.assertContains(
             response,
-            _('It is not possible to delete the status because it is being used')
+            _('It is not possible to delete status because it is being used')
         )

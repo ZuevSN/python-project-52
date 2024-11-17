@@ -26,7 +26,6 @@ class LabelsTestCase(TestCase):
         self.assertContains(response, 'FastApi')
         self.assertEqual(len(response.context['labels']), 3)
 
-
     def test_create_label(self):
         response = self.client.get(reverse_lazy('create_label'), follow=True)
 
@@ -77,7 +76,7 @@ class LabelsTestCase(TestCase):
             reverse_lazy('delete_label', kwargs={'pk': 3}),
             follow=True
         )
-        print(response.content.decode())
+
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,

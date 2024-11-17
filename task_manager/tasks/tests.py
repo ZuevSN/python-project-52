@@ -86,7 +86,9 @@ class TasksTestCase(TestCase):
             response,
             _('The task was successfully deleted')
         )
-        self.assertFalse(Task.objects.filter(name='DO Tests for project').exists())
+        self.assertFalse(
+            Task.objects.filter(name='DO Tests for project').exists()
+        )
 
     def test_filter_task(self):
         response = self.client.get(
@@ -96,7 +98,7 @@ class TasksTestCase(TestCase):
 
         self.assertContains(response, 'DO Tests for project')
         self.assertNotContains(response, 'fix project')
-    
+
     def test_task_list(self):
         response = self.client.get(reverse_lazy('tasks'))
 

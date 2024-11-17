@@ -14,7 +14,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 import dj_database_url
-import rollbar
 
 
 load_dotenv()
@@ -30,7 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv('DEBUG'):
+    DEBUG = os.getenv('DEBUG')
+else:
+    DEBUG = True
+
+ROLLBAR_KEY = os.getenv('ROLLBAR_KEY')
 
 ALLOWED_HOSTS = [
     'webserver',
@@ -94,6 +98,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -101,13 +106,21 @@ DATABASES = {
     }
 }
 
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.\
+MinimumLengthValidator',
         'OPTIONS': {
             'min_length': 3,
         }
@@ -154,7 +167,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 DATA_FOR_TEST = BASE_DIR / 'task_manager/fixtures/data.json'
 
 ROLLBAR = {
-    'access_token': '4c65a9c3c21c462daa51e89a5f4b0436',
+    'access_token': ROLLBAR_KEY,
     'environment': 'development' if DEBUG else 'production',
     'code_version': '0.1.0',
     'root': BASE_DIR,
