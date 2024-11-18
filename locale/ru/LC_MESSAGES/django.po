@@ -95,7 +95,7 @@ msgstr "Удаление метки"
 #: .\task_manager\mixins.py:28 .\task_manager\users\tests.py:66
 #: .\task_manager\users\tests.py:113
 msgid "You dont have permissions to modify another user."
-msgstr "Вы не можете редактировать другого пользователя"
+msgstr "У вас нет прав для изменения"
 
 #: .\task_manager\mixins.py:41 .\task_manager\tasks\tests.py:65
 msgid "Only the author of the task can delete it."
