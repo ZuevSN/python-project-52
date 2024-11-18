@@ -22,7 +22,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     success_message = _('You are logged in')
     extra_context = {
         'header': _('Logon'),
-        'button_text': _('Sign in')
+        'button_text': _('Enter')
     }
     next_page = reverse_lazy('index')
 
