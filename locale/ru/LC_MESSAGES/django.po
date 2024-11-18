@@ -68,7 +68,7 @@ msgstr "Метка успешно удалена"
 
 #: .\task_manager\labels\tests.py:117 .\task_manager\labels\views.py:67
 msgid "It is not possible to delete the label because it is being used"
-msgstr "Невозможно изменить метку, так как она используется"
+msgstr "Невозможно удалить метку"
 
 #: .\task_manager\labels\views.py:35
 msgid "Creating a label"
