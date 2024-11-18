@@ -99,7 +99,7 @@ msgstr "У вас нет прав для изменения"
 
 #: .\task_manager\mixins.py:41 .\task_manager\tasks\tests.py:65
 msgid "Only the author of the task can delete it."
-msgstr "Только создатель задачи может удалить ее"
+msgstr "Задачу может удалить только ее автор"
 
 #: .\task_manager\statuses\forms.py:37
 msgid "Created At"
