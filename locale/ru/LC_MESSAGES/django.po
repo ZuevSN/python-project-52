@@ -227,7 +227,7 @@ msgstr "Выход"
 
 #: .\task_manager\templates\header.html:42 .\task_manager\views.py:25
 msgid "Sign in"
-msgstr "Вход"
+msgstr "Войти"
 
 #: .\task_manager\templates\header.html:45
 msgid "Sign up"
