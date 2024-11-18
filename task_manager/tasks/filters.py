@@ -10,20 +10,20 @@ from task_manager.labels.models import Label
 class TaskFilter(df.FilterSet):
     user_tasks = df.BooleanFilter(
         label=_('show my tasks'),
-        method='show_user_tasks',
+        method='Show_user_tasks',
         widget=forms.CheckboxInput()
     )
     status = df.ModelChoiceFilter(
         queryset=Status.objects.all(),
-        label=_('status')
+        label=_('Status')
     )
     executor = df.ModelChoiceFilter(
         queryset=CustomUser.objects.all(),
-        label=_('executor')
+        label=_('Executor')
     )
     labels = df.ModelChoiceFilter(
         queryset=Label.objects.all(),
-        label=_('label')
+        label=_('Label')
     )
 
     def show_user_tasks(
