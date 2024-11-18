@@ -9,8 +9,8 @@ from task_manager.labels.models import Label
 
 class TaskFilter(df.FilterSet):
     user_tasks = df.BooleanFilter(
-        label=_('show my tasks'),
-        method='Show_user_tasks',
+        label=_('Show my tasks'),
+        method='show_user_tasks',
         widget=forms.CheckboxInput()
     )
     status = df.ModelChoiceFilter(
