@@ -5,7 +5,6 @@ dist/
 .coverage
 coverage.xml
 db.sqlite3
-static/
 .pytest_cache/
 *.pyc
 *.egg-info
