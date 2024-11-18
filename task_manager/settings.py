@@ -134,7 +134,7 @@ MinimumLengthValidator',
 if os.getenv('LANGUAGE'):
     LANGUAGE_CODE = os.getenv('LANGUAGE')
 else:
-    LANGUAGE_CODE = 'en-us'
+    LANGUAGE_CODE = 'ru-ru'
 
 LANGUAGES = (
     ('en-us', 'English'),
