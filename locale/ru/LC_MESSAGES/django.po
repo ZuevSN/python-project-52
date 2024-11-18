@@ -52,7 +52,7 @@ msgstr "Метка успешно создана"
 
 #: .\task_manager\labels\tests.py:69 .\task_manager\labels\views.py:49
 msgid "The label has been successfully changed"
-msgstr "Метка успещно изменена"
+msgstr "Метка успешно изменена"
 
 #: .\task_manager\labels\tests.py:83 .\task_manager\labels\tests.py:106
 #: .\task_manager\labels\views.py:72 .\task_manager\statuses\tests.py:83
