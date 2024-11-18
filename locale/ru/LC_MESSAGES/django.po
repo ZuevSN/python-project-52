@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 19:58+0300\n"
+"POT-Creation-Date: 2024-11-18 20:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,7 @@ msgid "Creating a label"
 msgstr "Создание метки"
 
 #: .\task_manager\labels\views.py:36 .\task_manager\statuses\views.py:39
-#: .\task_manager\tasks\views.py:53 .\task_manager\users\views.py:36
+#: .\task_manager\tasks\views.py:53
 msgid "Create"
 msgstr "Создать"
 
@@ -352,8 +352,14 @@ msgid "It is not possible to delete a user because it is being used"
 msgstr "Невозможно удалить пользователя, так как  он используется"
 
 #: .\task_manager\users\views.py:35
-msgid "Creating a user"
-msgstr "Создание пользователя"
+#, fuzzy
+#| msgid "Description"
+msgid "Registration"
+msgstr "Регистрация"
+
+#: .\task_manager\users\views.py:36
+msgid "Register"
+msgstr "Зарегистрировать"
 
 #: .\task_manager\users\views.py:52
 msgid "Changing the user"
@@ -378,6 +384,9 @@ msgstr "Войти"
 #: .\task_manager\views.py:34
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Creating a user"
+#~ msgstr "Создание пользователя"
 
 #~ msgid "Specialist"
 #~ msgstr "Специалист"

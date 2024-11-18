@@ -32,8 +32,8 @@ class UserCreateView(
     success_url = reverse_lazy('login')
     success_message = _('The user was created successfully')
     extra_context = {
-        'header': _('Creating a user'),
-        'button_text': _('Create')
+        'header': _('Registration'),
+        'button_text': _('Register')
     }
 
 
