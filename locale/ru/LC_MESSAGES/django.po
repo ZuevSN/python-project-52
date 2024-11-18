@@ -337,7 +337,7 @@ msgstr "Введенные пароли не совпадают."
 
 #: .\task_manager\users\tests.py:39 .\task_manager\users\views.py:33
 msgid "The user was created successfully"
-msgstr "Пользователь успешно создан"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: .\task_manager\users\tests.py:82 .\task_manager\users\views.py:50
 msgid "The user has been successfully changed"
