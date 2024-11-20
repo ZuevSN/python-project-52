@@ -3,18 +3,6 @@ from django.utils.translation import gettext_lazy as _
 from .models import Status
 
 
-class UniversalForm(forms.ModelForm):
-    def __init__(self, model, *args, **kwargs):
-        self._meta.model = model
-        self.Meta.fields = [
-            field.name for field in model._meta.get_fields()
-        ]
-
-    class Meta:
-        model = None
-        fields = []
-
-
 class StatusForm(forms.ModelForm):
 
     class Meta:
